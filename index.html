@@ -3,37 +3,45 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>git issue tracker</title>
+    <!-- font awesome  -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- daisy ui  -->
      <link href="https://cdn.jsdelivr.net/npm/daisyui@5" rel="stylesheet" type="text/css" />
 <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
     
 </head>
 <body>
-    <section id="logIn_card" class="mx-auto flex flex-col items-center items-center justify-center min-h-screen ">
+    <!-- login section  -->
+    <section id="login_part" class="mx-auto flex flex-col items-center items-center justify-center min-h-screen hidden">
+        <!-- login cards  -->
         <div class="bg-base-200 border-base-300 rounded-box w-xs border p-[20px]">
+            <!-- login 1st card  -->
             <div class="flex flex-col items-center space-y-1">
             <img src="./assets/github-logo.png" alt="">
             <h2 class="text-xl font-semibold">GitHub Issues Tracker</h2>
             <p class="text-sm">Sign in to manage your issues</p>
         </div>
+        <!-- login 2nd card  -->
         <div class="space-y-3">
             <fieldset class="fieldset ">
 
             <label class="label font-semibold text-sm">Username</label>
-            <input type="text" class="input" placeholder="Enter Username" />
+            <input id="username" type="text" class="input" placeholder="Enter Username" />
             <p class="text-violet-700 text-xs font-thin">Default : admin</p>
             <label class="label font-semibold text-sm">Password</label>
-            <input type="password" class="input" placeholder="Password" />
-            <p class="text-violet-700 text-xs font-thin">Default : 1234</p>
-            <button class="btn btn-primary mt-4">Sign In</button>
+            <input id="pass" type="password" class="input" placeholder="Password" />
+            <p class="text-violet-700 text-xs font-thin">Default : admin123</p>
+            <button onclick="mainpage()" id="signin_btn" class="btn btn-primary mt-4">Sign In</button>
 </fieldset>
         </div>
+        <!-- login 3rd card  -->
         <div class="flex items-center gap-1 mb-2">
             <hr class="flex-1 border-gray-300">
             <p>OR</p>
             <hr class="flex-1 border-gray-300">
         </div>
+        <!-- login 4th card  -->
         <div class="mx-auto items-center flex flex-col space-y-2">
             <div class="">
                 <p class="text-xs font-thin">Demo Credentials:</p>
@@ -47,5 +55,34 @@
         </div>
         </div>
     </section>
+
+    <!-- main page section -->
+     <section id="main_part" >
+        <!-- navbar  -->
+        <div class="navbar bg-base-300 shadow-sm">
+           
+        <div class="w-full flex flex-col md:flex-row md:justify-between md:items-center lg:flex-row lg:justify-between items-center gap-2">
+             <!-- nav logo and name  -->
+              <div class="">
+    <a class="btn btn-ghost">
+        <img src="./assets/github-logo.png" alt="" class="h-7">
+        <h2 class="flex-nowrap font-medium text-2xl font-semibold">GitHub Issues Tracker</h2>
+    </a>
+  </div>
+  <!-- search and new issue  -->
+  <div class="flex gap-2">
+    <div class="relative w-40">
+        <i class="fa-solid fa-magnifying-glass absolute left-3  top-1/2 -translate-y-1/2 text-gray-500 z-10"></i>
+         <input id="search" type="text" placeholder="Search issues..." class="input input-bordered pl-10 w-full" />
+    </div>
+      <button id="newissue" class="btn btn-primary w-40"><i class="fa-solid fa-plus"></i> New issue</button>
+    </div>
+        </div>
+  </div>
+     </section>
+
+
+     <!-- js added  -->
+      <script src="./script/script.js"></script>
 </body>
 </html>
