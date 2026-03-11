@@ -12,14 +12,14 @@ const spinner=document.getElementById("spinner");
 
 
 const mainpage=()=>{
-//     if(username.value === "admin" && pass.value === "admin123")
-// {
-//     loginPart.classList.add("hidden");
-//     mainPart.classList.remove("hidden");
-// }
-// else{
-//     alert("Wrong username or password.Please try again.")
-// }
+    if(username.value === "admin" && pass.value === "admin123")
+{
+    loginPart.classList.add("hidden");
+    mainPart.classList.remove("hidden");
+}
+else{
+    alert("Wrong username or password.Please try again.")
+}
 }
 //modal part
 
