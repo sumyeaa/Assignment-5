@@ -79,9 +79,9 @@ const displaymodal=(word)=>{
             <p>${word.assignee}</p>
             <p> - <span>${word.updatedAt}</span></p>
         </div>
-        <div>
-            <button>${labelBtn}</button>
-        </div>
+          <div class="flex gap-2 mb-4">
+              <div class="flex gap-3 mb-4 flex-wrap">${labelBtn}</div>
+          </div>
         <p>${word.description}</p>
         <div class="grid grid-cols-2 bg-gray-100 p-5">
             <div class="space-y-2">
@@ -222,4 +222,18 @@ function showClosed(){
 }
 //main function
 loadData();
+document.getElementById("newissue").addEventListener("click",()=>{
+   all.classList.remove("activecolour");
+    open.classList.remove("activecolour");
+    closed.classList.remove("activecolour");
+    const searchvalue = search.value.trim().toLowerCase();
 
+    fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
+    .then((res)=>res.json())
+    .then((data)=>{
+      const allwords=data.data;
+      const filterwords=allwords.filter((issues)=>
+        issues.title.toLowerCase().includes(searchvalue));
+      displaydata(filterwords);
+    })
+})
