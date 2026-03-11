@@ -8,6 +8,7 @@ const search = document.getElementById("search");
 const closed=document.getElementById("closed");
 const open=document.getElementById("open");
 const all=document.getElementById("all");
+const spinner=document.getElementById("spinner");
 
 
 const mainpage=()=>{
@@ -102,12 +103,14 @@ const displaymodal=(word)=>{
 
 let allIssue=[];
 const loadData=()=>{
-    all.classList.add("activecolour")
+    all.classList.add("activecolour");
+    spinner.classList.remove("hidden");
     fetch("https://phi-lab-server.vercel.app/api/v1/lab/issues")
     .then((res)=>res.json())
     .then((json)=>{
         allIssue=json.data;
         displaydata(allIssue);
+        spinner.classList.add("hidden");
     });
 };
 const displaydata=(allbtns)=>{
@@ -208,6 +211,9 @@ function showOpen(){
 }
 // all clicked function 
 function showAll(){
+    open.classList.remove("activecolour");
+    closed.classList.remove("activecolour");
+    all.classList.add("activecolour");
     displaydata(allIssue);
 
 }
@@ -222,8 +228,12 @@ function showClosed(){
 }
 //main function
 loadData();
+
+// searching 
+
 document.getElementById("newissue").addEventListener("click",()=>{
-   all.classList.remove("activecolour");
+   spinner.classList.remove("hidden");
+  all.classList.remove("activecolour");
     open.classList.remove("activecolour");
     closed.classList.remove("activecolour");
     const searchvalue = search.value.trim().toLowerCase();
@@ -235,5 +245,6 @@ document.getElementById("newissue").addEventListener("click",()=>{
       const filterwords=allwords.filter((issues)=>
         issues.title.toLowerCase().includes(searchvalue));
       displaydata(filterwords);
+      spinner.classList.add("hidden");
     })
 })

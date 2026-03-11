@@ -98,11 +98,16 @@
             <button id="open" onclick="showOpen()" class="btn btn-outline btn-primary text-xs w-[60px] p-5">Open</button>
             <button id="closed" onclick="showClosed()" class="btn btn-outline btn-primary text-xs w-[60px] p-5">Closed</button>
            </div>
+           
         </div>
+        <!-- spinner  -->
+           <div id="spinner" class=" flex items-center justify-center py-10 hidden">
+            <span class="loading loading-dots loading-md "></span>
+           </div>
         <div id="allDiv" class="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-6 gap-4 mx-auto"></div>
      </section>
 
-
+<!-- modal part -->
     <dialog id="word_modal" class="modal modal-bottom sm:modal-middle">
   <div class="modal-box">
     <div id="details_container" class="space-y-4">
